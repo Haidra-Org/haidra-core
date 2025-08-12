@@ -1,12 +1,12 @@
+from pydantic import SecretStr
+
 from haidra_core.ai_horde import AIHordeClientSettings, AIHordeWorkerSettings
 from haidra_core.ai_horde.settings import AIHordeServerSettings
 
 
 def test_ai_horde_client_settings() -> None:
     """Verify AIHordeClientSettings with default values."""
-    settings = AIHordeClientSettings(
-        api_key="test_api_key",
-    )
+    settings = AIHordeClientSettings(api_key=SecretStr("test_api_key"))
     assert settings.api_key.get_secret_value() == "test_api_key"
     assert settings.ai_horde_url == "https://aihorde.net/api/"
     assert settings.alt_ai_horde_urls == ["https://stablehorde.net/api/"]
@@ -17,7 +17,7 @@ def test_ai_horde_client_settings() -> None:
 def test_ai_horde_worker_settings() -> None:
     """Verify AIHordeWorkerSettings with custom values."""
     settings = AIHordeWorkerSettings(
-        api_key="test_worker_api_key",
+        api_key=SecretStr("test_worker_api_key"),
         aiworker_cache_home="./__worker_models",
     )
     assert settings.api_key.get_secret_value() == "test_worker_api_key"
