@@ -69,6 +69,7 @@ def test_settings_by_environment_variable() -> None:
 
     if aiworker_cache_home is None:
         aiworker_cache_home = "./__worker_models"
+        os.environ["AIWORKER_CACHE_HOME"] = aiworker_cache_home
 
     settings = AIHordeWorkerSettings()
 
