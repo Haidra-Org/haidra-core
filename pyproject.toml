@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "haidra_core"
-description = "Add your description here"
+description = "Core abstractions for the haidra-org ecosystem."
 authors = [
     {name = "tazlin", email = "tazlin.on.github@gmail.com"},
 ]
