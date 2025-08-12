@@ -1,0 +1,33 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+    -   id: check-yaml
+        exclude: ^mkdocs\.yml$
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+    -   id: black
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.8
+    hooks:
+    -    id: ruff
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.17.1'
+    hooks:
+    -   id: mypy
+        args: [., --strict, --ignore-missing-imports]
+        pass_filenames: false
+        additional_dependencies: [
+            pytest,
+            pydantic>=2.11.7,
+            pydantic-settings>=2.10.1,
+            StrEnum,
+
+        ]
+- repo: https://github.com/gauge-sh/tach-pre-commit
+  rev: v0.29.0
+  hooks:
+    - id: tach
