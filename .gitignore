@@ -1,5 +1,8 @@
 src/haidra_core/_version.py
 
+.env*
+.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
