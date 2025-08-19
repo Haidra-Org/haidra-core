@@ -63,6 +63,7 @@ select = [
   "ASYNC",
   ]
 ignore = [
+  "COM812", # When using `ruff format`, this is redundant
   "D105", # Missing docstring in magic method
   "D100", # Missing docstring in public module
   # Ignore D rules for non-google docstring standard
