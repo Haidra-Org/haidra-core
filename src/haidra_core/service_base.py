@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field
 
 
 class ContainsMessage(BaseModel):
@@ -16,7 +16,12 @@ class ContainsStatus(BaseModel):
 class ContainsReturnCode(BaseModel):
     """A model that contains a return code field."""
 
-    return_code: int = Field(alias="rc")
+    return_code: int = Field(
+        validation_alias=AliasChoices(
+            "return_code",
+            "rc",
+        ),
+    )
 
 
 class ContainsMessageReturnCode(ContainsMessage, ContainsReturnCode):
