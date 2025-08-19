@@ -8,9 +8,9 @@ def test_ai_horde_client_settings() -> None:
     """Verify AIHordeClientSettings with default values."""
     settings = AIHordeClientSettings(api_key=SecretStr("test_api_key"))
     assert settings.api_key.get_secret_value() == "test_api_key"
-    assert settings.ai_horde_url == "https://aihorde.net/api/"
-    assert settings.alt_ai_horde_urls == ["https://stablehorde.net/api/"]
-    assert settings.ratings_url == "https://ratings.aihorde.net/api/"
+    assert settings.ai_horde_url.encoded_string() == "https://aihorde.net/api/"
+    assert settings.alt_horde_urls[0].encoded_string() == "https://stablehorde.net/api/"
+    assert settings.ratings_url.encoded_string() == "https://ratings.aihorde.net/api/"
     assert settings.logs_folder == "./logs"
 
 
@@ -21,9 +21,9 @@ def test_ai_horde_worker_settings() -> None:
         aiworker_cache_home="./__worker_models",
     )
     assert settings.api_key.get_secret_value() == "test_worker_api_key"
-    assert settings.ai_horde_url == "https://aihorde.net/api/"
-    assert settings.alt_ai_horde_urls == ["https://stablehorde.net/api/"]
-    assert settings.ratings_url == "https://ratings.aihorde.net/api/"
+    assert settings.ai_horde_url.encoded_string() == "https://aihorde.net/api/"
+    assert settings.alt_horde_urls[0].encoded_string() == "https://stablehorde.net/api/"
+    assert settings.ratings_url.encoded_string() == "https://ratings.aihorde.net/api/"
     assert settings.logs_folder == "./logs"
     assert settings.aiworker_cache_home == "./__worker_models"
 
@@ -41,13 +41,13 @@ def test_ai_horde_server_settings() -> None:
         del os.environ["AI_HORDE_URL"]
 
     settings = AIHordeServerSettings()
-    assert settings.ai_horde_url == "https://test.local/api/"
+    assert settings.ai_horde_url.encoded_string() == "https://test.local/api/"
 
     del os.environ["HORDE_URL"]
 
     os.environ["AI_HORDE_URL"] = "https://test2.local/api/"
     settings = AIHordeServerSettings()
-    assert settings.ai_horde_url == "https://test2.local/api/"
+    assert settings.ai_horde_url.encoded_string() == "https://test2.local/api/"
 
     del os.environ["AI_HORDE_URL"]
 
