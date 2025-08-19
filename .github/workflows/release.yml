@@ -12,7 +12,7 @@ jobs:
 
     environment: # see https://github.com/pypa/gh-action-pypi-publish/tree/release/v1/
       name: pypi
-      url: https://pypi.org/p/horde-sdk/
+      url: https://pypi.org/p/haidra-core/
 
     permissions:
       id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
