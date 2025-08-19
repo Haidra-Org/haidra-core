@@ -6,10 +6,21 @@ exclude = [
     "**/tests",
     "**/venv",
 ]
-source_roots = [
-    ".",
+source_roots = [ "src",
 ]
 
 [[modules ]]
-path = "src.haidra_core"
+path = "haidra_core.service_base"
 depends_on = []
+
+[[modules ]]
+path = "haidra_core"
+depends_on = []
+
+[[modules ]]
+path = "haidra_core.ai_horde"
+depends_on = ["haidra_core.meta"]
+
+[[modules ]]
+path = "haidra_core.meta"
+depends_on = ["haidra_core"]
