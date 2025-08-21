@@ -2,8 +2,6 @@ from pydantic import Field
 
 from haidra_core.meta import SharedCISettings
 
-from .settings import DEFAULT_MODELS_FOLDER
-
 
 class AIHordeCISettings(SharedCISettings):
     """Settings for AI Horde CI/CD pipelines."""
@@ -16,6 +14,3 @@ class AIHordeCISettings(SharedCISettings):
 
     ai_horde_testing: bool = Field(default=False)
     """Indicates if the AI Horde is currently being tested."""
-
-    aiworker_cache_home: str = DEFAULT_MODELS_FOLDER
-    """The folder where AI worker models are stored."""
