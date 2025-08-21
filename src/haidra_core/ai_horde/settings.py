@@ -50,3 +50,9 @@ class AIHordeWorkerSettings(AIHordeClientSettings):
 
     aiworker_cache_home: str = DEFAULT_MODELS_FOLDER
     """The folder where AI worker (or client) files are stored, most notably models and checkpoints."""
+
+    hf_home: str = Field(default="~/.cache/huggingface")
+    """The hugging face home directory."""
+
+    xdg_cache_home: str = Field(default="~/.cache/")
+    """The standard XDG cache directory."""
